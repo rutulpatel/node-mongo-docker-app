@@ -1,0 +1,33 @@
+{
+  "name": "node-mongo-docker-app",
+  "version": "1.0.0",
+  "description": "A nodejs app using express, mongodb on docker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rutulpatel/node-mongo-docker-app.git"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "docker"
+  ],
+  "author": "Rutul Patel <rutulpatel.rtl@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rutulpatel/node-mongo-docker-app/issues"
+  },
+  "homepage": "https://github.com/rutulpatel/node-mongo-docker-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mongojs": "^2.5.0",
+    "mongoose": "^5.0.11",
+    "path": "^0.12.7",
+    "request": "^2.85.0"
+  }
+}
