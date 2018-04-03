@@ -9,22 +9,25 @@ router.get("/", function(req, res) {
         if(err) {
             console.log(err);
         } else { 
+            console.log(doc);
+            res.render("index", { todos: doc });
+        }
+    });
+});
+
+router.get("/add", function(req, res) {
+    var addTask = {};
+    addTask.taskName = "Test1";
+    var addTodo = Todo(addTask);
+    console.log(req.body);
+
+    addTodo.save(function(err, doc) {
+        if(err) {
+            console.log(err);
+        } else {
             res.render("index", { todo: doc });
         }
     });
 });
 
-// router.post("/add", function(req, res) {
-//     var task = {};
-//     task.task = req.body.task;
-//     var addTodo = Todo(task);
-//     console.log(req.body);
-
-//     addTodo.save(function(err, doc) {
-//         if(err) {
-//             console.log(err);
-//         } else {
-//             res.render("index", { todo: doc });
-//         }
-//     });
-// });
+module.exports = router;
