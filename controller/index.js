@@ -15,9 +15,10 @@ router.get("/", function(req, res) {
     });
 });
 
-router.get("/add", function(req, res) {
+router.post("/add", function(req, res) {
     var addTask = {};
-    addTask.taskName = "Test1";
+    console.log(req.body);
+    addTask.taskName = req.body.taskName;
     var addTodo = Todo(addTask);
     console.log(req.body);
 
