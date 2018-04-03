@@ -2,16 +2,19 @@
  * Main index.js file
  */
 
- var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000;
 
- var http = require("http");
- var express = require("express");
- var mongoose = require("mongoose");
- var request = require("request");
- var path = require("path");
- var bodyParser = require("body-parser");
- var exphbs = require("express-handlebars");
+var http = require("http");
+var express = require("express");
+var mongoose = require("mongoose");
+var request = require("request");
+var path = require("path");
+var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
 
+//app specific dependencies
+var controller = require("./controller");
+var Todo = require("./models/Todo.js");
 
 var app = express();
 app.server = http.createServer(app);
@@ -34,8 +37,21 @@ db.once("open", function(){
 //server static route
 app.use(express.static(path.join(__dirname, "/public")));
 
+// set views
+app.set("views", path.join(__dirname, "/views"));
+
+// set handlebars as view engine
+var hbs = exphbs.create({
+    layoutsDir: "views/layouts",
+    defaultLayout: "main"
+});
+
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+app.use("/", controller);
 
 app.server.listen(PORT, function() {
     console.log("app started on port " + PORT);
