@@ -21,7 +21,9 @@ app.server = http.createServer(app);
 
 // Database config
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/sample_app");
+// for connecting to local mongodb instance, use localhost; use mongo for docker's linked containers
+//mongoose.connect("mongodb://local/sample_app");
+mongoose.connect("mongodb://mongo/sample_app");
 var db = mongoose.connection;
 
 // print error if there's issue with db connection
