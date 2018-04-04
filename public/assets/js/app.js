@@ -20,7 +20,7 @@ $(document).ready(function() {
     $(".deleteTask").on("click", function(e) {
         e.preventDefault();
         $.ajax({
-            url: "/remove/" + $(".deleteTask").attr('id'),
+            url: "/remove/" + $(this).attr('id'),
             method: "DELETE",
             success: function(res) {
                 console.log(res);

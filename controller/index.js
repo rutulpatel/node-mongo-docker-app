@@ -9,7 +9,6 @@ router.get("/", function(req, res) {
         if(err) {
             console.log(err);
         } else { 
-            console.log(doc);
             res.render("index", { todos: doc });
         }
     });
@@ -32,6 +31,7 @@ router.post("/add", function(req, res) {
 });
 
 router.delete("/remove/:id", function(req, res) {
+    console.log(req.params.id);
     Todo.findByIdAndRemove(req.params.id, function(err) {
         if(err) {
             console.log(err);
