@@ -31,4 +31,15 @@ router.post("/add", function(req, res) {
     });
 });
 
+router.delete("/remove/:id", function(req, res) {
+    Todo.findByIdAndRemove(req.params.id, function(err) {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log("ID: " +req.params.id + " removed from database");
+            res.send("ID: " +req.params.id + " removed from database");
+        }
+    })
+});
+
 module.exports = router;

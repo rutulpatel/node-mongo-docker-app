@@ -1,13 +1,8 @@
 $(document).ready(function() {
 
     $("#addTodo").on("click", function() {
-        
-
         if($("#todoTextbox").val().trim().length > 0) {
             var inp = $("#todoTextbox").val();
-            console.log(inp);
-            alert(inp);    
-
             $.ajax({
                 url: "/add",
                 method: "POST",
@@ -22,7 +17,15 @@ $(document).ready(function() {
         }
     });
 
-
-
-
+    $(".deleteTask").on("click", function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: "/remove/" + $(".deleteTask").attr('id'),
+            method: "DELETE",
+            success: function(res) {
+                console.log(res);
+                location.reload();
+            }
+        })
+    });
 });

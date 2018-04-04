@@ -10,7 +10,7 @@
         <div class="col-auto align-self-center m-auto">
             <ul>
                 {{#if todos}}{{#each todos}}
-                <li>{{this.taskName}}</li>
+                <li>{{this.taskName}} <span><a class="deleteTask" href="/" id={{this.id}}>[X]</a></span></li>
                 {{/each}}{{/if}}
             </ul>
         </div>
